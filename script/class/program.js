@@ -32,9 +32,9 @@ function Program()
 
 	}, 500);*/
 
-	for(var i = 0; i < 25; i++)
+	for(var i = 0; i < 35; i++)
 	{
-		var r = chance.integer({ min: 45, max: 80 });
+		var r = chance.integer({ min: 45, max: 100 });
 
 		self.metaballs.push(new Metaball
 		(
