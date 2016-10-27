@@ -5,6 +5,15 @@ function Metaprocessor(program)
 	this.program = program || null;
 
 	this.l = false;
+
+	if(findGetParameter('debug'))
+	{
+		this.d = true;
+	}
+	else
+	{
+		this.d = false;
+	}
 }
 
 Metaprocessor.prototype.process = function()
@@ -16,7 +25,15 @@ Metaprocessor.prototype.process = function()
 	{
 		if(globaldata.data[i] < 255 && globaldata.data[i] > 140)
 		{
-			globaldata.data[i] = 255;
+			if(this.d)
+			{
+				globaldata.data[i] = 255;
+				globaldata.data[i-3] = 255;
+			}
+			else
+			{
+				globaldata.data[i] = 255;
+			}
 		} 
 		else if(globaldata.data[i] <= 140)
 		{
@@ -60,8 +77,18 @@ Metaprocessor.prototype.process = function()
 	this.program.ctx.putImageData(globaldata, 0, 0);
 
 	//[0, 0, 0, a, 0, 0, 0, a, 0, 0, 0, a, 0, 0, 0, a, 0, 0, 0, a, 0, 0, 0, a, 0, 0, 0, a, 0, 0, 0, a, 0, 0, 0, a]
-
-
-
 	
+}
+
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+    .substr(1)
+        .split("&")
+        .forEach(function (item) {
+        tmp = item.split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+    });
+    return result;
 }
