@@ -10,9 +10,11 @@ function Metaball(ctx, x, y, r)
 	this.ox = this.x;
 	this.oy = this.y;
 
-	this.dx = chance.integer({ min: -5, max: 5 });
-	this.dy = chance.integer({ min: -5, max: 5 });
+	this.dx = chance.integer({ min: 1, max: 3 }) * (chance.bool() ? 1 : -1);
+	this.dy = chance.integer({ min: 1, max: 3 }) * (chance.bool() ? 1 : -1);
 	
+	this.rot = chance.integer({ min: 1, max: 5 }) * (chance.bool() ? 1 : -1);
+
 }
 
 Metaball.prototype.draw = function()
@@ -31,6 +33,9 @@ Metaball.prototype.draw = function()
 
 Metaball.prototype.update = function(dt, t)
 {
-	this.x += this.dx * dt;
-	this.y += this.dy * dt;
+	//this.x += this.dx * dt;
+	//this.y += this.dy * dt;
+
+	this.x = this.ox + Math.cos(t * this.rot * dt) * this.r * 2;
+	this.y = this.oy + Math.sin(t * this.rot * dt) * this.r * 2;
 }

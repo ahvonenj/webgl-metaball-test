@@ -18,9 +18,9 @@ function Program()
 	this.metaballs = [];
 
 
-	this.ivl = setInterval(function()
+	/*this.ivl = setInterval(function()
 	{
-		var r = chance.integer({ min: 35, max: 60 });
+		var r = chance.integer({ min: 45, max: 80 });
 
 		self.metaballs.push(new Metaball
 		(
@@ -30,7 +30,20 @@ function Program()
 			r
 		));
 
-	}, 500);
+	}, 500);*/
+
+	for(var i = 0; i < 25; i++)
+	{
+		var r = chance.integer({ min: 45, max: 80 });
+
+		self.metaballs.push(new Metaball
+		(
+			self.ctx, 
+			chance.integer({ min: r, max: Global.width - r }), 
+			chance.integer({ min: r, max: Global.height - r }), 
+			r
+		));
+	}
 
 	requestAnimationFrame(function(t) { self.animate(self); });
 }
