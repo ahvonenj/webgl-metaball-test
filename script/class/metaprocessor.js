@@ -14,11 +14,11 @@ Metaprocessor.prototype.process = function()
 
 	for(var i = 3; i < globaldata.data.length; i += 4)
 	{
-		if(globaldata.data[i] < 255 && globaldata.data[i] > 150)
+		if(globaldata.data[i] < 255 && globaldata.data[i] > 140)
 		{
 			globaldata.data[i] = 255;
 		} 
-		else if(globaldata.data[i] < 150)
+		else if(globaldata.data[i] <= 140)
 		{
 			globaldata.data[i] = 0;
 		}

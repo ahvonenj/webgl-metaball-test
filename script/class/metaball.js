@@ -7,6 +7,7 @@ function Metaball(ctx, x, y, r)
 	this.x = x || 10;
 	this.y = y || 10;
 	this.r = r || 10;
+	this.or = this.r;
 	this.ox = this.x;
 	this.oy = this.y;
 
@@ -38,4 +39,6 @@ Metaball.prototype.update = function(dt, t)
 
 	this.x = this.ox + Math.cos(t * this.rot * dt) * this.r * 2;
 	this.y = this.oy + Math.sin(t * this.rot * dt) * this.r * 2;
+
+	//this.r = Math.abs(Math.sin(t * this.rot * dt) * 50);
 }
