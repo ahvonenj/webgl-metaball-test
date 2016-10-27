@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<title>webgl-metaballs</title>
+
+		<link rel = "stylesheet" type = "text/css" href = "style/index.css">
+
+		<script src = "script/lib/chance.min.js"></script>
+		<script src = "script/class/global.js"></script>
+		<script src = "script/class/js-utility.js"></script>
+		<script src = "script/class/time.js"></script>
+		<script src = "script/class/metaprocessor.js"></script>
+		<script src = "script/class/metaball.js"></script>
+		<script src = "script/class/program.js"></script>
+		
+
+
+
+		<script src = "script/index.js"></script>
+
+	</head>
+	<body>
+		<canvas id = "canvas"></canvas>
+
+		<script>
+			var program = null;
+
+			(function()
+			{
+				program = new Program();
+
+				document.getElementById('canvas').onmousemove = function(e) 
+				{
+				    var pos = findPos(this);
+				    var x = e.pageX - pos.x;
+				    var y = e.pageY - pos.y;
+				    var coord = "x=" + x + ", y=" + y;
+				    var c = this.getContext('2d');
+				    var p = c.getImageData(x, y, 1, 1).data; 
+				    console.log(coord, p, p[0], p[1], p[2], p[3]);
+				};
+
+				function findPos(obj) 
+				{
+				    var curleft = 0, curtop = 0;
+				    if (obj.offsetParent) {
+				        do {
+				            curleft += obj.offsetLeft;
+				            curtop += obj.offsetTop;
+				        } while (obj = obj.offsetParent);
+				        return { x: curleft, y: curtop };
+				    }
+				    return undefined;
+				}
+
+				function rgbToHex(r, g, b) 
+				{
+				    if (r > 255 || g > 255 || b > 255)
+				        throw "Invalid color component";
+				    return ((r << 16) | (g << 8) | b).toString(16);
+				}
+			})();
+
+		</script>
+	</body>
+</html>
