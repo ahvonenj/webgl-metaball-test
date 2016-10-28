@@ -16,6 +16,9 @@ function Metaball(ctx, x, y, r)
 	
 	this.rot = chance.integer({ min: 1, max: 5 }) * (chance.bool() ? 1 : -1);
 
+	this.c = tinycolor.random().lighten(10).toHexString();
+	this.c2 = tinycolor(this.c).lighten().toHexString();
+
 }
 
 Metaball.prototype.draw = function()
@@ -23,8 +26,9 @@ Metaball.prototype.draw = function()
 	this.ctx.beginPath();
 	this.ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
 
-	this.grd = this.ctx.createRadialGradient(this.x, this.y, this.r / 2, this.x, this.y, this.r);
-	this.grd.addColorStop(0, 'black');
+	this.grd = this.ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+	this.grd.addColorStop(0, this.c);
+	//this.grd.addColorStop(0.5, this.c2);
 	this.grd.addColorStop(1, 'transparent');
 
 	this.ctx.fillStyle = this.grd;

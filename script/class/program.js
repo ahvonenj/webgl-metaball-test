@@ -12,6 +12,8 @@ function Program()
 
 	this.ctx = this.canvas.getContext('2d');
 
+	//this.ctx.globalCompositeOperation = 'overlay';
+
 	this.metaprocessor = new Metaprocessor(this);
 
 
@@ -34,7 +36,7 @@ function Program()
 
 	for(var i = 0; i < 35; i++)
 	{
-		var r = chance.integer({ min: 45, max: 100 });
+		var r = chance.integer({ min: 80, max: 120 });
 
 		self.metaballs.push(new Metaball
 		(

@@ -23,7 +23,7 @@ Metaprocessor.prototype.process = function()
 
 	for(var i = 3; i < globaldata.data.length; i += 4)
 	{
-		if(globaldata.data[i] < 255 && globaldata.data[i] > 140)
+		if(globaldata.data[i] < 255 && globaldata.data[i] > Global.metaball.merge_treshold)
 		{
 			if(this.d)
 			{
@@ -32,7 +32,7 @@ Metaprocessor.prototype.process = function()
 			}
 			else
 			{
-				globaldata.data[i] = 255;
+				globaldata.data[i] = 200;
 			}
 		} 
 		else if(globaldata.data[i] <= 140)
