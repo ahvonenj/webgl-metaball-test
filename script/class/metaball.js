@@ -16,7 +16,7 @@ function Metaball(ctx, x, y, r)
 	
 	this.rot = chance.integer({ min: 1, max: 5 }) * (chance.bool() ? 1 : -1);
 
-	this.c = tinycolor.random().lighten(10).toHexString();
+	this.c = tinycolor.random().toHexString();
 	this.c2 = tinycolor(this.c).lighten().toHexString();
 
 }

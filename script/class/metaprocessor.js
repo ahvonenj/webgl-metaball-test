@@ -32,10 +32,10 @@ Metaprocessor.prototype.process = function()
 			}
 			else
 			{
-				globaldata.data[i] = 200;
+				globaldata.data[i] = 180;
 			}
 		} 
-		else if(globaldata.data[i] <= 140)
+		else if(globaldata.data[i] < Global.metaball.merge_treshold)
 		{
 			globaldata.data[i] = 0;
 		}

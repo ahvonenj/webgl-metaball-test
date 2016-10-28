@@ -13,6 +13,7 @@ function Program()
 	this.ctx = this.canvas.getContext('2d');
 
 	//this.ctx.globalCompositeOperation = 'overlay';
+	this.ctx.imageSmoothingEnabled = true;
 
 	this.metaprocessor = new Metaprocessor(this);
 
