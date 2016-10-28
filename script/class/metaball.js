@@ -23,10 +23,13 @@ function Metaball(ctx, x, y, r)
 
 Metaball.prototype.draw = function()
 {
+	this.ctx.globalCompositeOperation = 'color';
+	this.ctx.imageSmoothingEnabled = true;
+
 	this.ctx.beginPath();
 	this.ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
 
-	this.grd = this.ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+	this.grd = this.ctx.createRadialGradient(this.x, this.y, 5, this.x, this.y, this.r);
 	this.grd.addColorStop(0, this.c);
 	//this.grd.addColorStop(0.5, this.c2);
 	this.grd.addColorStop(1, 'transparent');
